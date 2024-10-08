@@ -96,6 +96,7 @@ Buena suerte!
 ## Respuestas
 
 Preguntas (Parte 1)
+
 1.- Los patrones adecuados para la implementación del codigo son los siguientes:
 Facade: ya que se necesita distribuir de mejor manera las responsabilidades, logrando con Facade separar las funciones
 principales en diferentes clases y así aligerar el main.
@@ -103,6 +104,8 @@ Observer: Con el observer se puede crear un sistema de notificaciones los cuales
 los detalles de un evento se actualicen.
 
 Cómo patron extra se crea el Factory, para poder así crear Eventos de mejor manera.
+
+
 2.- 
 Facade:  
 
@@ -111,6 +114,7 @@ en el objeto principal.
 
 
 Preguntas (Parte 2)
+
 1.- Es un patrón de diseño de comportamiento que define la estructura de un algoritmo en una clase base y permite que 
 las subclases personalicen ciertos pasos sin cambiar la estructura general.
 
