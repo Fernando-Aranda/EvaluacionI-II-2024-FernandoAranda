@@ -20,7 +20,7 @@ public class Main {
 		EntityManager em = entityManagerFactory.createEntityManager();
 
 		// Creamos el controlador de la Facade
-		FacadeInterfaz FacadaControlador;
+		FacadeInterfaz facadeControlador;
 
 		// ********* Eliminar un Evento para un Asistente ************
 		// ***********************************************************
@@ -30,8 +30,9 @@ public class Main {
 		long rut = 217638392;
 		Asistente asistente = em.find(Asistente.class, rut);
 		// Creamos la Facade para eliminar eventos y la ejecutamos
-		FacadaControlador = new FacadeEliminarEventoParaUnAsistente(asistente, em);
-		FacadaControlador.ejecutar();
+
+		facadeControlador = new FacadeEliminarEventoParaUnAsistente(asistente, em);
+		facadeControlador.ejecutar();
 
 		// ***********************************************************
 		// ***************** Ingresa un nuevo Evento *****************
@@ -46,10 +47,10 @@ public class Main {
 		}
 
 		int id = ultimoEvento + 1;
-		
+
 		// Se crea una Facada para crear los eventos
-		FacadaControlador = new FacadeCrearEvento(em, id, "2024-10-25", "Alice in Chains", "Parque Ohiggins");
-		FacadaControlador.ejecutar();
+		facadeControlador = new FacadeCrearEvento(em, id, "2024-10-25", "Alice in Chains", "Parque Ohiggins");
+		facadeControlador.ejecutar();
 
 		// ***********************************************************
 		// ************* Asociar un Evento con Asistente *************
@@ -58,16 +59,14 @@ public class Main {
 		rut = 64389216;
 		asistente = em.find(Asistente.class, rut);
 		Evento evento2 = em.find(Evento.class, 4);
-		
+
 		// Crear Facada para Asociar Evento a un asistente
-		FacadaControlador = new FacadeAsociarEventoConAsistente(em, asistente, evento2);
-		
+		facadeControlador = new FacadeAsociarEventoConAsistente(em, asistente, evento2);
+
 		// ***********************************************************
 		// ******************* Actualizar un evento ******************
 		// ***********************************************************
-		// Agregar Observers
-		Observer observador = new EventoObserver();
-		evento2.agregarObserver(observador);
+
 		em.getTransaction().begin();
 		id = 1;
 		evento2 = em.find(Evento.class, id);

@@ -1,7 +1,7 @@
 # Primera Evaluación II-2024
 
 ### Asignatura: Patrones de Software y Programación <br> Profesor: Daniel San Martín
-Nombre Estudiante: 
+Nombre Estudiante: Fernando Aranda
 
 <hr>
 
@@ -107,7 +107,8 @@ Cómo patron extra se crea el Factory, para poder así crear Eventos de mejor ma
 
 
 2.- 
-Facade:  
+Facade: Es un patrón de diseño de comportamiento, que permite crear una "pantalla" en dónde se pueden encapsular
+funciones complejas, para lograr así una mejor integridad en el código y mejor comunicación con el cliente.
 
 Observer: Es un patrón de diseño de comportamiento, el cual notifica a los "observadores" cada vez que ocurre un cambio
 en el objeto principal.

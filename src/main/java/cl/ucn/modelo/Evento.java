@@ -1,7 +1,6 @@
 package cl.ucn.modelo;
 
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +12,7 @@ public class Evento {
 	private String nombre;
 	private String fecha;
 	private String lugar;
-
-	private List<Observer> listaObservers;
+	private List<Observer> listaObservers = new ArrayList<Observer>();
 
 	public void agregarObserver(Observer observer) {
 		this.listaObservers.add(observer);
@@ -89,12 +87,12 @@ public class Evento {
 
 	public void agregarAsistente(Asistente asistente) {
 		asistentes.add(asistente);
-		notificar(asistente.toString());
+		
 	}
 
 	private void notificar(String dato) {
 		for (Observer observer : listaObservers) {
-			observer.notificar(dato);
+			observer.observar(dato);
 		}
 
 	}
