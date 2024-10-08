@@ -8,79 +8,95 @@ import java.util.List;
 @Entity
 public class Evento {
 
-    @Id
-    private Long id;
-    private String nombre;
-    private String fecha;
-    private String lugar;
+	@Id
+	private Long id;
+	private String nombre;
+	private String fecha;
+	private String lugar;
 
-    @ManyToMany
-    @JoinTable(
-            name = "evento_asistente",
-            joinColumns = @JoinColumn(name = "id_evento"),
-            inverseJoinColumns = @JoinColumn(name = "rut"))
-    private List<Asistente> asistentes;
+	private List<Observer> listaObservers;
 
-    public long getId() {
-        return id;
-    }
+	public void agregarObserver(Observer observer) {
+		this.listaObservers.add(observer);
+	}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	@ManyToMany
+	@JoinTable(name = "evento_asistente", joinColumns = @JoinColumn(name = "id_evento"), inverseJoinColumns = @JoinColumn(name = "rut"))
+	private List<Asistente> asistentes;
 
-    public String getNombre() {
-        return nombre;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+	public void setId(long id) {
+		this.id = id;
 
-        if (this.asistentes != null) {
-            for (Asistente asistente : asistentes) {
-                asistente.notificarCambio(this);
-            }
-        }
-    }
+	}
 
-    public String getFecha() {
-        return fecha;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 
-        if (this.asistentes != null) {
-            for (Asistente asistente : asistentes) {
-                asistente.notificarCambio(this);
-            }
-        }
-    }
+		if (this.asistentes != null) {
+			for (Asistente asistente : asistentes) {
+				asistente.notificarCambio(this);
+			}
+		}
+		notificar(nombre);
+	}
 
-    public String getLugar() {
-        return lugar;
-    }
+	public String getFecha() {
+		return fecha;
+	}
 
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
 
-        if (this.asistentes != null) {
-            for (Asistente asistente : asistentes) {
-                asistente.notificarCambio(this);
-            }
-        }
-    }
+		if (this.asistentes != null) {
+			for (Asistente asistente : asistentes) {
+				asistente.notificarCambio(this);
+			}
+		}
+		notificar(fecha);
+	}
 
-    public List<Asistente> getAsistentes() {
-        return asistentes;
-    }
+	public String getLugar() {
+		return lugar;
+	}
 
-    public void setAsistentes(List<Asistente> asistentes) {
-        this.asistentes = asistentes;
-    }
+	public void setLugar(String lugar) {
+		this.lugar = lugar;
 
-    public void agregarAsistente(Asistente asistente) {
-        asistentes.add(asistente);
-    }
+		if (this.asistentes != null) {
+			for (Asistente asistente : asistentes) {
+				asistente.notificarCambio(this);
+			}
+		}
+		notificar(lugar);
+	}
+
+	public List<Asistente> getAsistentes() {
+		return asistentes;
+	}
+
+	public void setAsistentes(List<Asistente> asistentes) {
+		this.asistentes = asistentes;
+
+	}
+
+	public void agregarAsistente(Asistente asistente) {
+		asistentes.add(asistente);
+		notificar(asistente.toString());
+	}
+
+	private void notificar(String dato) {
+		for (Observer observer : listaObservers) {
+			observer.notificar(dato);
+		}
+
+	}
 
 }

@@ -95,6 +95,32 @@ Buena suerte!
 
 ## Respuestas
 
-(comienze a escribir aquí sus respuestas, indicando sección y número de pregunta)
+Preguntas (Parte 1)
+1.- Los patrones adecuados para la implementación del codigo son los siguientes:
+Facade: ya que se necesita distribuir de mejor manera las responsabilidades, logrando con Facade separar las funciones
+principales en diferentes clases y así aligerar el main.
+Observer: Con el observer se puede crear un sistema de notificaciones los cuales "imprimen" cada vez que
+los detalles de un evento se actualicen.
 
-TEST GITHUB
+Cómo patron extra se crea el Factory, para poder así crear Eventos de mejor manera.
+2.- 
+Facade:  
+
+Observer: Es un patrón de diseño de comportamiento, el cual notifica a los "observadores" cada vez que ocurre un cambio
+en el objeto principal.
+
+
+Preguntas (Parte 2)
+1.- Es un patrón de diseño de comportamiento que define la estructura de un algoritmo en una clase base y permite que 
+las subclases personalicen ciertos pasos sin cambiar la estructura general.
+
+el patrón de diseño Template Method, crea una "Receta" para crear un metodo, en donde se pueden modificar ciertas
+funciones para cumplir diferentes requisitos, pero su estructura sigue siendo la misma y sigue un "patrón" concreto.
+ejeplo: crear un cóctel, se pueden agregar diferentes tipos de ingredientes, pero tarde o temprano se debe "batir" 
+y "servir", siguiendo así una estructura pre-hecha.
+
+2.- En la estructura vista en la imagen, se puede apreciar como 2 clases de objetos se juntan en 1 sóla, la cual lleva la
+función de "StoreData()", por lo que se puede asumir, se ocupa de la siguiente forma: DataBase.StoreData(A), 
+DataBase.StoreData(B), logrando así crear una "carpeta" de datos. Este patron de diseño es carácteristico de
+Flyweight, en donde se busca optimizar la memoria y el espacio. 
+ 
